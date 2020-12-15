@@ -1,0 +1,24 @@
+.sidebar .nav-link.active, .sidebar .nav, .sidebar .sidebar-minimizer{
+    background: #161928;
+}
+.sidebar .nav-link.nav-link-success {
+    background: #57b957;
+}
+.sidebar .nav-link.nav-link-danger {
+    background: #257d25;
+}
+.sidebar .nav-link.active .nav-icon, .sidebar .nav-link .nav-icon {
+    color: #ffffff;
+}
+.sidebar .nav-link.nav-link-danger:hover {
+    background: #3b9c3b;
+}
+.sidebar .nav-link:hover {
+    background: #57b957;
+}
+.app-header{
+    height: 62px;
+}
+.header-fixed .app-body {
+    margin-top: 62px;
+}
