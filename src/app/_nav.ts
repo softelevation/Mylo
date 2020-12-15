@@ -12,6 +12,20 @@ export const navItems: INavData[] = [
   },
   {
     title: true,
+    name: 'Users'
+  },
+  {
+    name: 'Add users',
+    url: '/theme/addusers',
+    icon: 'icon-drop'
+  },
+  {
+    name: 'Users',
+    url: '/theme/users',
+    icon: 'icon-pencil'
+  },
+  {
+    title: true,
     name: 'Theme Setting'
   },
   {
@@ -120,12 +134,12 @@ export const navItems: INavData[] = [
   // },
   {
     name: 'Brokers',
-    url: '/charts',
+    url: '/theme/users',
     icon: 'icon-pie-chart'
   },
   {
     name: 'Customers',
-    url: '/charts',
+    url: '/theme/users',
     icon: 'icon-pie-chart'
   },
   // {

@@ -2,6 +2,8 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 
 import { ColorsComponent } from './colors.component';
+import { UsersComponent } from './users.component';
+import { AddUsersComponent } from './add-users.component';
 import { TypographyComponent } from './typography.component';
 
 const routes: Routes = [
@@ -20,6 +22,20 @@ const routes: Routes = [
         component: ColorsComponent,
         data: {
           title: 'Colors'
+        }
+      },
+      {
+        path: 'users',
+        component: UsersComponent,
+        data: {
+          title: 'users'
+        }
+      },
+      {
+        path: 'addusers',
+        component: AddUsersComponent,
+        data: {
+          title: 'addusers'
         }
       },
       {
