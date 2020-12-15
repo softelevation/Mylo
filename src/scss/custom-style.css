@@ -22,3 +22,57 @@
 .header-fixed .app-body {
     margin-top: 62px;
 }
+/* .bg-primary {
+    background-color: #57b957 !important;
+} */
+.bg-green{
+    background-color: #57b957 !important;
+}
+.card-body.text-center h2 {
+    margin: 18px 0;
+}
+button.btn.btn-primary.active {
+    background: #fff !important;
+    color: #57b957 !important;
+    font-weight: 600;
+    border: 0;
+    height: 40px;
+}
+button.btn.btn-primary {
+    background: #57b957;
+    color: #fff;
+    border: 0;
+    height: 40px;
+    cursor: pointer;
+    font-weight: 600;
+}
+.btn-link{
+    color: #57b957;
+    box-shadow: none;
+}
+.card.bg-primary {
+    border-color: #57b957;
+}
+button.custom-btn {
+    min-width: 120px;
+    height: 40px;
+    font-size: 15px;
+}
+.app-body .main button.btn.btn-primary {
+    background: #219421;
+}
+.page-item.active .page-link {
+    background-color: #57b957;
+    border-color: #57b957;
+}
+.page-link{
+    color: #42c342;
+}
+.page-link:hover {
+    color: #ffffff;
+    background-color: #57b957;
+    border-color: #57b957;
+}
+a {
+    color: #59d059;
+}
