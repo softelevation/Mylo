@@ -76,3 +76,14 @@ button.custom-btn {
 a {
     color: #59d059;
 }
+.header-fixed .app-header button.navbar-toggler.d-none.d-md-block {
+    display: none !important;
+}
+.header-fixed .app-header{
+    padding: 0 25px;
+}
+.btn-success {
+    color: #fff;
+    background-color: #57b957;
+    border-color: #57b957;
+}
