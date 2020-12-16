@@ -3,44 +3,128 @@
     <div class="col-sm-12">
       <div class="card">
         <div class="card-header">
-          <strong>Company</strong>
-          <small>Form</small>
+          <strong>Add User</strong>
         </div>
         <div class="card-body">
+          <div class="row">
+            <div class="col-md-6 form-group">
+              <label for="company">Upload Profile</label>
+              <div class="avatar-upload">
+                <div class="avatar-edit">
+                    <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" />
+                    <label for="imageUpload"></label>
+                </div>
+                <div class="avatar-preview">
+                    <div id="imagePreview" style="background-image: url(http://i.pravatar.cc/500?img=7);">
+                    </div>
+                </div>
+              </div>
+            </div>
+            <div class="col-md-6 form-group">
+              <div class="stars apprating d-flex justify-content-end"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
+            </div>
+          </div>
 		  <div class="row">
+        <div class="col-md-6 form-group">
+          <label for="company">First Name</label>
+          <input type="text" class="form-control" id="company">
+          </div>
 			  <div class="col-md-6 form-group">
-				<label for="company">Name</label>
+				<label for="company">Last Name</label>
 				<input type="text" class="form-control" id="company">
 			  </div>
 			  <div class="col-md-6 form-group">
 				<label for="vat">Email</label>
 				<input type="email" class="form-control" id="vat">
-			  </div>
+        </div>
+        <div class="col-md-6 form-group">
+          <label for="vat">Phone Number</label>
+          <input type="number" class="form-control" id="vat">
           </div>
-          <div class="row">
-            <div class="col-md-6 form-group col-sm-8">
+          <div class="col-md-6 form-group">
+            <label for="vat">Qualifications</label>
+            <input type="text" class="form-control" id="vat">
+            </div>
+            <div class="col-md-6 form-group">
+              <label for="vat">Location</label>
+              <input type="text" class="form-control" id="vat">
+              </div>
+            <!-- <div class="col-md-6 form-group col-sm-8">
               <label for="city">Password</label>
               <input type="text" class="form-control" id="city">
-            </div>
+            </div> -->
             <div class="col-md-6 form-group col-sm-4">
               <label for="postal-code">Roll</label>
 			  <select class="form-control" id="ccmonth">
-                <option>Select roll</option>
+                <option>Select Roll</option>
                 <option>User</option>
                 <option>Broker</option>
               </select>
             </div>
-          </div><!--/.row-->
-		  
-		  <div class="row">
             <div class="col-md-6 form-group col-sm-8">
-			<button type="submit" class="btn btn-sm btn-success custom-btn"><i class="fa fa-dot-circle-o"></i> Submit</button>
+              <label for="city">Banks The Broker Work With</label>
+              <div class="banks-card">
+                <img src="assets/img/brand/card1.png" alt="card">
+                <img src="assets/img/brand/card2.png" alt="card">
+                <img src="assets/img/brand/card3.png" alt="card">
+              </div>
             </div>
-          </div><!--/.row-->
+            <div class="col-md-6 form-group">
+              <label for="vat">About Me</label>
+              <textarea class="form-control">
+
+              </textarea>
+              </div>
+          </div>
+          <div class="google-review-section row mb-5">
+            <div class="col-md-12"><h5 class="custom-google-heading mb-4 mt-4">Reviews</h5></div>
+            <div class="re-viewSection">
+              <div class="col-md-12">
+                <div class="testimonial-box">	
+                  <div class="d-flex">						
+                    <img src="https://images.pexels.com/photos/206615/pexels-photo-206615.jpeg?w=940&h=650&auto=compress&cs=tinysrgb" class="img-responsive" alt="" width="90">
+                    <div class="name-rating ml-3">
+                      <h5>James Baker</h5>
+                      <div class="ratings-icons">
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                        <i class="fa fa-star"></i>
+                      </div>
+                    </div>
+                  </div>
+                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sapien augue, dictum et gravida et</p>									 							
+                </div>	
+              </div>
+            </div>
+          </div>
+		    <div class="row">
+            <div class="col-md-6 form-group col-sm-8">
+			    <button type="submit" class="btn btn-sm btn-success custom-btn"><i class="fa fa-dot-circle-o"></i> Submit</button>
+            </div>
+          </div>
 		  
         </div>
       </div>
-    </div><!--/.col-->
-  </div><!--/.row-->
-  
+    </div>
+  </div>
 </div>
+
+
+<script>
+  function readURL(input) {
+    if (input.files && input.files[0]) {
+        var reader = new FileReader();
+        reader.onload = function(e) {
+            $('#imagePreview').css('background-image', 'url('+e.target.result +')');
+            $('#imagePreview').hide();
+            $('#imagePreview').fadeIn(650);
+        }
+        reader.readAsDataURL(input.files[0]);
+    }
+}
+$("#imageUpload").change(function() {
+    readURL(this);
+});
+</script>
