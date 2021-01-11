@@ -6,39 +6,41 @@
           <strong>Company</strong>
           <small>Form</small>
         </div>
+        <form [formGroup]="userForm">
         <div class="card-body">
 		  <div class="row">
 			  <div class="col-md-6 form-group">
 				<label for="company">Name</label>
-				<input type="text" class="form-control" id="company">
+				<input type="text" formControlName="name" class="form-control" id="company">
 			  </div>
 			  <div class="col-md-6 form-group">
 				<label for="vat">Email</label>
-				<input type="email" class="form-control" id="vat">
+				<input type="email" formControlName="email" class="form-control" id="vat">
 			  </div>
           </div>
           <div class="row">
             <div class="col-md-6 form-group col-sm-8">
               <label for="city">Password</label>
-              <input type="text" class="form-control" id="city">
+              <input type="text" formControlName="password" class="form-control" id="city">
             </div>
             <div class="col-md-6 form-group col-sm-4">
               <label for="postal-code">Roll</label>
-			  <select class="form-control" id="ccmonth">
+			        <select class="form-control" formControlName="roll_id" id="ccmonth">
                 <option>Select roll</option>
-                <option>User</option>
-                <option>Broker</option>
+                <option value="1">User</option>
+                <option value="2">Broker</option>
               </select>
             </div>
           </div><!--/.row-->
 		  
 		  <div class="row">
             <div class="col-md-6 form-group col-sm-8">
-			<button type="submit" class="btn btn-sm btn-success custom-btn"><i class="fa fa-dot-circle-o"></i> Submit</button>
+			<button type="submit" class="btn btn-sm btn-success custom-btn" (click)="addUser()"><i class="fa fa-dot-circle-o"></i> Submit</button>
             </div>
           </div><!--/.row-->
 		  
         </div>
+        </form>
       </div>
     </div><!--/.col-->
   </div><!--/.row-->

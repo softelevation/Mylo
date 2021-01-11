@@ -19,6 +19,12 @@ export class AppServiceService {
       catchError(this.handleError)
     );
   }
+
+  addUsers(input) {
+    return this.http.post<getAllUsers>(this.serverUrl + 'user/users',input).pipe(
+      catchError(this.handleError)
+    );
+  }
   
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {
