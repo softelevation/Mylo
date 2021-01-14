@@ -20,6 +20,12 @@ export class AppServiceService {
     );
   }
 
+  getAllBroker() {
+    return this.http.get<getAllUsers>(this.serverUrl + 'user/brokers').pipe(
+      catchError(this.handleError)
+    );
+  }
+
   addUsers(input) {
     return this.http.post<getAllUsers>(this.serverUrl + 'user/users',input).pipe(
       catchError(this.handleError)

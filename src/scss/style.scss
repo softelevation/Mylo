@@ -13,3 +13,8 @@
 .form-control.loginForm-password {
     width: 70%;
 }
+
+.card .card-header {
+	display: flex;
+    justify-content: space-between;
+}

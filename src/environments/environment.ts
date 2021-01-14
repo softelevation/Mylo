@@ -7,3 +7,8 @@ export const environment = {
   production: false,
   API: "http://localhost:3000/"
 };
+
+
+// 
+// http://localhost:3000/
+// "http://104.131.39.110:3000/"

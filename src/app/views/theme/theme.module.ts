@@ -3,6 +3,7 @@ import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
 import { FormsModule } from '@angular/forms';
+import { AgmCoreModule } from '@agm/core';
 
 import { ColorsComponent } from './colors.component';
 import { UsersComponent } from './users.component';
@@ -19,7 +20,11 @@ import { ThemeRoutingModule } from './theme-routing.module';
     CommonModule,
     ReactiveFormsModule,
     FormsModule,
-    ThemeRoutingModule
+    ThemeRoutingModule,
+    AgmCoreModule.forRoot({
+      apiKey: 'AIzaSyB1erXOJ7-_yyd3jYyRYrMh7THiUxpAevU',
+      libraries: ['places']
+    })
   ],
   declarations: [
     ColorsComponent,

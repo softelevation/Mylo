@@ -14,10 +14,15 @@ export const navItems: INavData[] = [
   //   title: true,
   //   name: 'Users'
   // },
+  // {
+  //   name: 'Add users',
+  //   url: '/theme/addusers',
+  //   icon: 'icon-drop'
+  // },
   {
-    name: 'Add users',
-    url: '/theme/addusers',
-    icon: 'icon-drop'
+    name: 'Brokers',
+    url: '/theme/broker',
+    icon: 'icon-pie-chart'
   },
   {
     name: 'Users',
@@ -27,11 +32,6 @@ export const navItems: INavData[] = [
   {
     name: 'Brokers on Map',
     url: '/theme/users',
-    icon: 'icon-pie-chart'
-  },
-  {
-    name: 'Brokers',
-    url: '/theme/broker',
     icon: 'icon-pie-chart'
   },
   {

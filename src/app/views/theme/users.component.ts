@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { AppServiceService } from './../../app-service.service';
+import { Router } from '@angular/router';
 
 @Component({
   templateUrl: 'users.component.html'
@@ -9,7 +10,8 @@ export class UsersComponent implements OnInit {
   users: getAllUsers;
   error: string;
   constructor(
-    private appService: AppServiceService
+    private appService: AppServiceService,
+    private router: Router
   ) { }
 
   
@@ -19,6 +21,8 @@ export class UsersComponent implements OnInit {
       error => this.error = error
     );
   }
+
+  
 
 }
 
