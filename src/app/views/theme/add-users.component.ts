@@ -116,7 +116,7 @@ export class AddUsersComponent implements OnInit {
       address : this.address
     }
     this.appService.addUsers(obj).subscribe(data => {
-          this.router.navigate(['theme/users']);
+          this.router.navigate(['theme/broker']);
       });
   }
 

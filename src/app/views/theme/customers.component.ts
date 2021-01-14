@@ -15,7 +15,7 @@ export class CustomersComponent implements OnInit {
   
   ngOnInit(): void {
     this.appService.getAllUsers().subscribe(
-      (data: getAllUsers) => this.users = data,
+      (data: getAllUsers) => this.users = data['data'],
       error => this.error = error
     );
   }

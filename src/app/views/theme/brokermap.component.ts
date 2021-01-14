@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
-import {HttpClient} from '@angular/common/http';
+import { AppServiceService } from './../../app-service.service';
+import { Router } from '@angular/router';
 
 @Component({
-  styles: ['agm-map { height: 300px; /* height is required */ }'],
+  styles: ['agm-map { height: 500px; /* height is required */ }'],
   templateUrl: 'brokermap.component.html'
 })
 export class BrokermapComponent implements OnInit {
@@ -10,15 +11,20 @@ export class BrokermapComponent implements OnInit {
   lat = 43.879078;
   lng = -103.4615581;
   selectedMarker;
-  markers = [
-    // These are all just random coordinates from https://www.random.org/geographic-coordinates/
-    { lat: 22.33159, lng: 105.63233, alpha: 1 },
-    { lat: 7.92658, lng: -12.05228, alpha: 1 },
-    { lat: 48.75606, lng: -118.859, alpha: 1 },
-    { lat: 5.19334, lng: -67.03352, alpha: 1 },
-    { lat: 12.09407, lng: 26.31618, alpha: 1 },
-    { lat: 47.92393, lng: 78.58339, alpha: 1 }
-  ];
+  markers : [];
+
+  ngOnInit(): void {
+    this.appService.getAllBroker().subscribe((data: any) => {
+          this.markers = data['data'];
+      });
+  }
+
+
+  constructor(
+    private appService: AppServiceService,
+    private router: Router
+  ) { }
+
 
   addMarker(lat: number, lng: number) {
     this.markers.push({ lat, lng, alpha: 0.4 });
@@ -55,3 +61,15 @@ export class BrokermapComponent implements OnInit {
  
 
 }
+
+
+// interface getAllUsers {
+//   id: number;
+//   name: string;
+//   email: string;
+//   latitude: number;
+//   longitude: number;
+//   address: string;
+//   roll_id: string;
+//   status: string;
+// }
