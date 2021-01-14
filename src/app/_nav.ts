@@ -25,7 +25,7 @@ export const navItems: INavData[] = [
     icon: 'icon-pie-chart'
   },
   {
-    name: 'Users',
+    name: 'Customer',
     url: '/theme/users',
     icon: 'icon-pencil'
   },
