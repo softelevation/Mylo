@@ -8,8 +8,6 @@ export const environment = {
   API: "http://104.131.39.110:3000/"
 };
 
-
-
 // 
 // http://localhost:3000/
 

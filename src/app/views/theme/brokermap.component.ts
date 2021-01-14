@@ -1,38 +1,27 @@
 import { Component, OnInit } from '@angular/core';
-import { AppServiceService } from './../../app-service.service';
-import { Router } from '@angular/router';
-import { MapsAPILoader, MouseEvent } from '@agm/core';
+import {HttpClient} from '@angular/common/http';
 
 @Component({
   templateUrl: 'brokermap.component.html'
 })
 export class BrokermapComponent implements OnInit {
 
-  title: string = 'AGM project';
-  latitude: number;
-  longitude: number;
-  zoom:number;
+  name = 'Angular 5';
+  lat:any;
+  lng:any;
 
-  ngOnInit(): void {
-    this.setCurrentLocation();
-  }
-
-  private setCurrentLocation() {
-    if ('geolocation' in navigator) {
-      navigator.geolocation.getCurrentPosition((position) => {
-        this.latitude = position.coords.latitude;
-        this.longitude = position.coords.longitude;
-        this.zoom = 15;
+  constructor(){
+    if (navigator) {
+    navigator.geolocation.getCurrentPosition( pos => {
+        this.lng = +pos.coords.longitude;
+        this.lat = +pos.coords.latitude;
       });
     }
   }
 
-}
+  ngOnInit(): void {
+  }
 
-interface getAllUsers {
-  id: number;
-  name: string;
-  email: string;
-  roll_id: string;
-  status: string;
+ 
+
 }
