@@ -8,6 +8,7 @@ import { AgmCoreModule } from '@agm/core';
 import { ColorsComponent } from './colors.component';
 import { UsersComponent } from './users.component';
 import { BrokerComponent } from './broker.component';
+import { BrokermapComponent } from './brokermap.component';
 import { CustomersComponent } from './customers.component';
 import { AddUsersComponent } from './add-users.component';
 import { TypographyComponent } from './typography.component';
@@ -30,6 +31,7 @@ import { ThemeRoutingModule } from './theme-routing.module';
     ColorsComponent,
     UsersComponent,
     BrokerComponent,
+    BrokermapComponent,
     CustomersComponent,
     AddUsersComponent,
     TypographyComponent

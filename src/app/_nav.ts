@@ -26,12 +26,12 @@ export const navItems: INavData[] = [
   },
   {
     name: 'Customer',
-    url: '/theme/users',
+    url: '/theme/customer',
     icon: 'icon-pencil'
   },
   {
     name: 'Brokers on Map',
-    url: '/theme/users',
+    url: '/theme/broker-map',
     icon: 'icon-pie-chart'
   },
   {
