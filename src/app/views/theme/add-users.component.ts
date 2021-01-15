@@ -29,13 +29,17 @@ export class AddUsersComponent implements OnInit {
 
   ngOnInit(): void {
     this.userForm = this.fb.group({
-      name: ['', Validators.required],
+      first_name: ['', Validators.required],
+      last_name: ['', Validators.required],
       email: ['', Validators.required],
-      password: ['', Validators.required],
       phone_no: ['', Validators.required],
-      address: ['', Validators.required]
+      qualifications: ['', Validators.required],
+      address: ['', Validators.required],
+      banks: ['', Validators.required],
+      about_me: ['', Validators.required]      
     });
 
+// password: ['', Validators.required],
 
     this.mapsAPILoader.load().then(() => {
       this.setCurrentLocation();
@@ -108,16 +112,17 @@ export class AddUsersComponent implements OnInit {
   addUser() {
 
     let obj = {
-      name : this.userForm.get('name').value,
+      name : this.userForm.get('first_name').value+' '+this.userForm.get('last_name').value,
       email : this.userForm.get('email').value,
-      password : this.userForm.get('password').value,
       phone_no : this.userForm.get('phone_no').value,
+      qualifications : this.userForm.get('qualifications').value,
+      banks : this.userForm.get('banks').value,
+      about_me : this.userForm.get('about_me').value,
       roll_id : 2,
       latitude : this.latitude,
       longitude : this.longitude,
       address : this.address
     }
-
       this.appService.addUsers(obj).subscribe(data => {
           this.router.navigate(['theme/broker']);
       });

@@ -4,7 +4,7 @@
     <div class="col-lg-12">
       <div class="card">
         <div class="card-header">
-          <i class="fa fa-align-justify"> Brokers list</i> 
+          <i class="fa fa-align-justify"><span>Brokers List</span></i> 
           <button type="button" class="btn btn-outline-primary waves-effect waves-light" (click)='addUsers()'>
             Add Broker
         </button>
@@ -13,27 +13,22 @@
           <table class="table table-bordered table-striped table-sm">
             <thead>
               <tr>
+                <!-- <th>Profile</th> -->
                 <th>Name</th>
                 <th>Email</th>
-                <th>Role</th>
-                <th>Status</th>
+                <th>Location</th>
+                <th>Review</th>
                 <th>Action</th>
               </tr>
             </thead>
             <tbody>
               <tr *ngFor="let user of users">
+                <!-- <td><img src="assets/img/brand/Final_Logo.png" style="width: 40px; height: 40px; border-radius: 50%;" alt="profile picture"></td> -->
                 <td>{{user.name}}</td>
                 <td>{{user.email}}</td>
-                <td>{{ (user.roll_id == '1') ? "user":"broker" }}</td>
-                <td>
-                  <span class="badge badge-success">
-                    active
-                  </span>
-                </td>
-            <td>
-              <a href=""><i class="far fa-edit"></i></a>
-              <a href="#"><i class="far fa-trash"></i></a>
-            </td>
+                <td>{{user.address}}</td>
+                <td> <div class="stars"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div></td>
+                <td><i class="fa fa-pencil-square-o" aria-hidden="true"></i><i class="fa fa-trash" aria-hidden="true"></i></td>
               </tr>
             </tbody>
           </table>
