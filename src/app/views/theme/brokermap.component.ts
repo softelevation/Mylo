@@ -26,9 +26,9 @@ export class BrokermapComponent implements OnInit {
   ) { }
 
 
-  addMarker(lat: number, lng: number) {
-    this.markers.push({ lat, lng, alpha: 0.4 });
-  }
+  // addMarker(lat: number, lng: number) {
+  //   this.markers.push({ lat, lng, alpha: 0.4 });
+  // }
 
   max(coordType: 'lat' | 'lng'): number {
     return Math.max(...this.markers.map(marker => marker[coordType]));

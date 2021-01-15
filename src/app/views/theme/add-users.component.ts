@@ -55,6 +55,8 @@ export class AddUsersComponent implements OnInit {
           //set latitude, longitude and zoom
           this.latitude = place.geometry.location.lat();
           this.longitude = place.geometry.location.lng();
+
+          this.getAddress( this.latitude, this.longitude);
           this.zoom = 12;
         });
       });
@@ -68,13 +70,13 @@ export class AddUsersComponent implements OnInit {
         this.latitude = position.coords.latitude;
         this.longitude = position.coords.longitude;
         this.zoom = 8;
-        this.getAddress(this.latitude, this.longitude);
+        
       });
     }
   }
 
   markerDragEnd($event: MouseEvent) {
-    console.log($event);
+    // console.log($event);
     this.latitude = $event.coords.lat;
     this.longitude = $event.coords.lng;
     this.getAddress(this.latitude, this.longitude);
@@ -82,13 +84,13 @@ export class AddUsersComponent implements OnInit {
 
   getAddress(latitude, longitude) {
     this.geoCoder.geocode({ 'location': { lat: latitude, lng: longitude } }, (results, status) => {
-      console.log(results);
-      console.log(status);
+      // console.log(results);
+      // console.log(status);
       if (status === 'OK') {
         if (results[0]) {
           this.zoom = 12;
           this.address = results[0].formatted_address;
-          // return results[0].formatted_address;
+          // return results;
         } else {
           window.alert('No results found');
         }
@@ -115,7 +117,8 @@ export class AddUsersComponent implements OnInit {
       longitude : this.longitude,
       address : this.address
     }
-    this.appService.addUsers(obj).subscribe(data => {
+
+      this.appService.addUsers(obj).subscribe(data => {
           this.router.navigate(['theme/broker']);
       });
   }

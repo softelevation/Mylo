@@ -20,6 +20,12 @@ export class AppServiceService {
     );
   }
 
+  getdashboard() {
+    return this.http.get<any>(this.serverUrl + 'user/dashboard').pipe(
+      catchError(this.handleError)
+    );
+  }
+
   getAllBroker() {
     return this.http.get<getAllUsers>(this.serverUrl + 'user/brokers').pipe(
       catchError(this.handleError)

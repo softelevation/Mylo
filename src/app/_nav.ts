@@ -20,24 +20,19 @@ export const navItems: INavData[] = [
   //   icon: 'icon-drop'
   // },
   {
-    name: 'Brokers',
-    url: '/theme/broker',
-    icon: 'icon-pie-chart'
-  },
-  {
     name: 'Customer',
     url: '/theme/customer',
     icon: 'icon-pencil'
   },
   {
-    name: 'Brokers on Map',
-    url: '/theme/broker-map',
+    name: 'Brokers',
+    url: '/theme/broker',
     icon: 'icon-pie-chart'
   },
   {
-    name: 'Customers',
-    url: '/theme/customers',
+    name: 'Brokers on Map',
+    url: '/theme/broker-map',
     icon: 'icon-pie-chart'
-  },
+  }
   
 ];

@@ -4,7 +4,7 @@
     <div class="col-lg-12">
       <div class="card">
         <div class="card-header">
-          <i class="fa fa-align-justify">Combined All Table</i> 
+          <i class="fa fa-align-justify"> Brokers list</i> 
           <button type="button" class="btn btn-outline-primary waves-effect waves-light" (click)='addUsers()'>
             Add Broker
         </button>
@@ -27,7 +27,7 @@
                 <td>{{ (user.roll_id == '1') ? "user":"broker" }}</td>
                 <td>
                   <span class="badge badge-success">
-                      {{(user.status == '1') ? "success":"broker"}}
+                    active
                   </span>
                 </td>
 				<td>Delete/edit</td>
