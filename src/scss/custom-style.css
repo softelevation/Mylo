@@ -87,3 +87,48 @@ a {
     background-color: #57b957;
     border-color: #57b957;
 }
+.card .card-header button.btn.btn-outline-primary.waves-effect.waves-light {
+    background: #57b957;
+    border: 0;
+    color: #fff;
+    line-height: normal;
+}
+.table-bordered thead th, .table-bordered thead td {
+    border-bottom-width: 1px;
+}
+.table-bordered th, .table-bordered td {
+    padding: 0.65rem 0.5rem;
+}
+/* .table-bordered thead th {
+    color: #676e82;
+    font-size: 16px;
+    font-weight: 600;
+    background: #f7f7f7;
+} */
+.table-bordered thead th {
+    color: #ffffff;
+    font-size: 16px;
+    font-weight: 600;
+    background: #57b957;
+}
+i {
+    font-family: 'FontAwesome';
+    font-style: normal;
+}
+.table-bordered td a i {
+    font-size: 18px;
+    margin: 0 8px;
+}
+.table-striped tbody tr:nth-of-type(odd) {
+    background-color: transparent;
+}
+.table-striped tbody tr:nth-of-type(even) {
+    background-color: #f7f7f7;
+}
+
+.table-bordered th, .table-bordered td {
+    border: 1px solid #c8ced369;
+}
+.card .card-header{
+    align-items: center;
+}

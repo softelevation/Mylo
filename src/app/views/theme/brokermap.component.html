@@ -7,7 +7,7 @@
           <i class="fa fa-align-justify"> Brokers on map</i>
         </div>
         <div class="card-body">
-          <agm-map [latitude]="latitude" [longitude]="longitude" [zoom]="2" (mapClick)="addMarker($event.coords.lat, $event.coords.lng)">
+          <agm-map [latitude]="lat" [longitude]="lng" [zoom]="13" (mapClick)="addMarker($event.coords.lat, $event.coords.lng)">
           <agm-marker *ngFor="let marker of markers"
             [latitude]="marker.latitude"  [longitude]="marker.longitude" [opacity]="1"
             [markerDraggable]="true" (markerClick)="selectMarker($event)">

@@ -3,13 +3,13 @@ import { AppServiceService } from './../../app-service.service';
 import { Router } from '@angular/router';
 
 @Component({
-  styles: ['agm-map { height: 500px; /* height is required */ }'],
+  styles: ['agm-map { height: 500px; /* height is required */ } #floating-panel {font-family: "Roboto", "sans-serif";}'],
   templateUrl: 'brokermap.component.html'
 })
 export class BrokermapComponent implements OnInit {
 
-  lat = 43.879078;
-  lng = -103.4615581;
+  lat = -33.878882;
+  lng = 151.218855;
   selectedMarker;
   markers : [];
 
