@@ -28,7 +28,7 @@
                 <td>{{user.email}}</td>
                 <td>{{user.address}}</td>
                 <td> <div class="stars"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div></td>
-                <td><i class="fa fa-pencil-square-o" aria-hidden="true"></i><i class="fa fa-trash" aria-hidden="true"></i></td>
+                <td><i class="fa fa-pencil-square-o" aria-hidden="true"  (click)="editBroker(user.id)"></i><i class="fa fa-trash" aria-hidden="true" (click)="openConfirmationDialog(user.id)"></i></td>
               </tr>
             </tbody>
           </table>

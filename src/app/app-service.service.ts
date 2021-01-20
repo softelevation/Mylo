@@ -37,6 +37,24 @@ export class AppServiceService {
       catchError(this.handleError)
     );
   }
+
+  updateUsers(input,id) {
+    return this.http.post<getAllUsers>(this.serverUrl + 'user/users/'+id,input).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  deleteData(input){
+    return this.http.post<any>(this.serverUrl + 'user/delete-data',input).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  brokerProfile(input){
+    return this.http.post<any>(this.serverUrl + 'user/brokerProfile',input).pipe(
+      catchError(this.handleError)
+    );
+  }
   
   private handleError(error: HttpErrorResponse) {
     if (error.error instanceof ErrorEvent) {

@@ -12,20 +12,20 @@
               <tr>
                 <th>Name</th>
                 <th>Email</th>
-                <th>Role</th>
                 <th>Status</th>
+                <th>Action</th>
               </tr>
             </thead>
             <tbody>
               <tr *ngFor="let user of users">
                 <td>{{user.name}}</td>
                 <td>{{user.email}}</td>
-                <td>Customer</td>
                 <td>
                   <span class="badge badge-success">
-                      {{(user.status == '1') ? "success":"broker"}}
+                      active
                   </span>
                 </td>
+                <td><i class="fa fa-trash" aria-hidden="true"  (click)="openConfirmationDialog(user.id)"></i></td>
               </tr>
             </tbody>
           </table>
