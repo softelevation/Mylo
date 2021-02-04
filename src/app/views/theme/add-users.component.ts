@@ -15,6 +15,8 @@ export class AddUsersComponent implements OnInit {
   longitude: number;
   zoom:number;
   address: string;
+  rating:number;
+  ratings_icons = ['','','','',''];
   private geoCoder;
 
   @ViewChild('search')
@@ -57,18 +59,14 @@ export class AddUsersComponent implements OnInit {
                 this.address = res['data'].address;
                 this.latitude = res['data'].latitude;
                 this.longitude = res['data'].longitude;
+                this.rating = res['data'].rating;
+
+                this.set_rating(res['data'].rating);
             });
         }else{
                 this.user_id = 0;
         }
     });
-
-    // this.userForm.controls.first_name.setValue('aaaaa');
-
-
-
-
-// password: ['', Validators.required],
 
     this.mapsAPILoader.load().then(() => {
       this.setCurrentLocation();
@@ -97,6 +95,24 @@ export class AddUsersComponent implements OnInit {
   }
 
 
+  set_rating(input){
+    if(input >= 0){
+      this.ratings_icons[0] = 'ratings-icons';
+    }
+    if(input >= 1){
+      this.ratings_icons[1] = 'ratings-icons';
+    }
+    if(input >= 2){
+      this.ratings_icons[2] = 'ratings-icons';
+    }
+    if(input >= 3){
+      this.ratings_icons[3] = 'ratings-icons';
+    }
+    if(input >= 4){
+      this.ratings_icons[4] = 'ratings-icons';
+    }
+  }
+
   private setCurrentLocation() {
     if ('geolocation' in navigator) {
       navigator.geolocation.getCurrentPosition((position) => {
@@ -117,20 +133,16 @@ export class AddUsersComponent implements OnInit {
 
   getAddress(latitude, longitude) {
     this.geoCoder.geocode({ 'location': { lat: latitude, lng: longitude } }, (results, status) => {
-      // console.log(results);
-      // console.log(status);
       if (status === 'OK') {
         if (results[0]) {
           this.zoom = 12;
           this.address = results[0].formatted_address;
-          // return results;
         } else {
           window.alert('No results found');
         }
       } else {
         window.alert('Geocoder failed due to: ' + status);
       }
-
     });
   }
 
@@ -149,8 +161,10 @@ export class AddUsersComponent implements OnInit {
       roll_id : 2,
       latitude : this.latitude,
       longitude : this.longitude,
-      address : this.address
+      address : this.address,
+      rating : this.rating
     }
+    
     if(this.user_id){
         this.appService.updateUsers(obj,this.user_id).subscribe(data => {
           this.router.navigate(['theme/broker']);
@@ -160,7 +174,14 @@ export class AddUsersComponent implements OnInit {
           this.router.navigate(['theme/broker']);
         });
     }
-      
+  }
+
+  changeReting(input,val){
+    this.ratings_icons = ['','','','',''];
+    this.rating = input;
+    for (let index = 0; index < input+1; index++) {
+        this.ratings_icons[index] = 'ratings-icons';
+    }
   }
 
   collapsed(event: any): void {

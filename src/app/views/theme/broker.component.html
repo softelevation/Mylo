@@ -27,7 +27,13 @@
                 <td>{{user.name}}</td>
                 <td>{{user.email}}</td>
                 <td>{{user.address}}</td>
-                <td> <div class="stars"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div></td>
+                <td> <div class="stars"> 
+                        <i [ngClass]="{'ratings-icons': user.rating >= 0 && user.rating != null}" class="fa fa-star"></i> 
+                        <i [ngClass]="{'ratings-icons': user.rating >= 1 && user.rating != null}" class="fa fa-star"></i> 
+                        <i [ngClass]="{'ratings-icons': user.rating >= 2 && user.rating != null}" class="fa fa-star"></i> 
+                        <i [ngClass]="{'ratings-icons': user.rating >= 3 && user.rating != null}" class="fa fa-star"></i> 
+                        <i [ngClass]="{'ratings-icons': user.rating >= 4 && user.rating != null}" class="fa fa-star"></i> 
+                </div></td>
                 <td><i class="fa fa-pencil-square-o" aria-hidden="true"  (click)="editBroker(user.id)"></i><i class="fa fa-trash" aria-hidden="true" (click)="openConfirmationDialog(user.id)"></i></td>
               </tr>
             </tbody>
