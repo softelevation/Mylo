@@ -19,6 +19,7 @@ export class AddUsersComponent implements OnInit {
   ratings_icons = ['','','','',''];
   private geoCoder;
 
+
   @ViewChild('search')
   public searchElementRef: ElementRef;
 
@@ -60,8 +61,6 @@ export class AddUsersComponent implements OnInit {
                 this.latitude = res['data'].latitude;
                 this.longitude = res['data'].longitude;
                 this.rating = res['data'].rating;
-
-                this.set_rating(res['data'].rating);
             });
         }else{
                 this.user_id = 0;
@@ -94,24 +93,6 @@ export class AddUsersComponent implements OnInit {
     });
   }
 
-
-  set_rating(input){
-    if(input >= 0){
-      this.ratings_icons[0] = 'ratings-icons';
-    }
-    if(input >= 1){
-      this.ratings_icons[1] = 'ratings-icons';
-    }
-    if(input >= 2){
-      this.ratings_icons[2] = 'ratings-icons';
-    }
-    if(input >= 3){
-      this.ratings_icons[3] = 'ratings-icons';
-    }
-    if(input >= 4){
-      this.ratings_icons[4] = 'ratings-icons';
-    }
-  }
 
   private setCurrentLocation() {
     if ('geolocation' in navigator) {
