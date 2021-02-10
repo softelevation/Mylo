@@ -20,6 +20,18 @@ export class AppServiceService {
     );
   }
 
+  filterAllUsers(input){
+    return this.http.post<any>(this.serverUrl + 'user/user_list',input).pipe(
+      catchError(this.handleError)
+    );
+  }
+
+  filterAllBrokers(input){
+    return this.http.post<any>(this.serverUrl + 'user/broker_list',input).pipe(
+      catchError(this.handleError)
+    );
+  }
+
   getdashboard() {
     return this.http.get<any>(this.serverUrl + 'user/dashboard').pipe(
       catchError(this.handleError)

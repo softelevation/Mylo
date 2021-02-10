@@ -47,7 +47,7 @@ export const routes: Routes = [
     path: '',
     component: DefaultLayoutComponent,
     data: {
-      title: 'Home'
+      title: ''
     },
     children: [
       {
@@ -75,7 +75,7 @@ export const routes: Routes = [
         loadChildren: () => import('./views/notifications/notifications.module').then(m => m.NotificationsModule)
       },
       {
-        path: 'theme',
+        path: '',
         loadChildren: () => import('./views/theme/theme.module').then(m => m.ThemeModule)
       },
       {

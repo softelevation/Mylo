@@ -14,7 +14,7 @@ const routes: Routes = [
   {
     path: '',
     data: {
-      title: 'Theme'
+      title: ''
     },
     children: [
       {
@@ -32,35 +32,35 @@ const routes: Routes = [
         path: 'customer',
         component: UsersComponent,
         data: {
-          title: 'customer'
+          title: 'Customer'
         }
       },
 	  {
         path: 'broker',
         component: BrokerComponent,
         data: {
-          title: 'broker'
+          title: 'Broker'
         }
       },
       {
         path: 'broker-map',
         component: BrokermapComponent,
         data: {
-          title: 'broker-map'
+          title: 'Broker-map'
         }
       },
       {
         path: 'customers',
         component: CustomersComponent,
         data: {
-          title: 'customers'
+          title: 'Customers'
         }
       },
       {
         path: 'addusers',
         component: AddUsersComponent,
         data: {
-          title: 'addusers'
+          title: 'Add broker'
         }
       },
       {

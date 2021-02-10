@@ -10,6 +10,10 @@ import { ManageData } from './manage-data';
 export class UsersComponent implements OnInit {
 
   users: getAllUsers;
+  users_count: number;
+  next_count: number;
+  previews_count: number;
+  users_count_1 = [];
   error: string;
   constructor(
     private appService: AppServiceService,
@@ -21,9 +25,34 @@ export class UsersComponent implements OnInit {
   
   ngOnInit(): void {
     this.appService.getAllUsers().subscribe(
-      (data: getAllUsers) => this.users = data["data"],
-      error => this.error = error
-    );
+      (data: getAllUsers) => {
+        this.users = data["data"];
+        this.paginate_custom(data["message"],0);
+      });
+  }
+
+  
+  paginate_custom(input,set){
+        this.users_count_1 = [];
+        this.next_count = set + 1;
+        this.previews_count = set - 1;
+        this.users_count = Math.ceil(input/10);
+        for (let i = 0; i < this.users_count; i++) {
+          if(set == i){
+            this.users_count_1.push({id:i,class:"page-item active",name:i+1});
+          }else{
+            this.users_count_1.push({id:i,class:"page-item",name:i+1});
+          }
+        }
+  }
+
+  paginate_list(id){
+    let ids = id*10;
+    this.appService.filterAllUsers({limit_to:ids}).subscribe(
+      (data: getAllUsers) => {
+        this.users = data["data"];
+        this.paginate_custom(data["message"],id);
+      });
   }
 
   openConfirmationDialog(id){

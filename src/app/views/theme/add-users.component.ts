@@ -146,13 +146,14 @@ export class AddUsersComponent implements OnInit {
       rating : this.rating
     }
     
+    
     if(this.user_id){
         this.appService.updateUsers(obj,this.user_id).subscribe(data => {
-          this.router.navigate(['theme/broker']);
+          this.router.navigate(['broker']);
         });
     }else{
         this.appService.addUsers(obj).subscribe(data => {
-          this.router.navigate(['theme/broker']);
+          this.router.navigate(['broker']);
         });
     }
   }

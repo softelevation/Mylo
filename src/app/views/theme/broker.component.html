@@ -40,14 +40,9 @@
           </table>
           <nav>
             <ul class="pagination">
-              <li class="page-item"><a class="page-link" href="#">Prev</a></li>
-              <li class="page-item active">
-                <a class="page-link" href="#">1</a>
-              </li>
-              <li class="page-item"><a class="page-link" href="#">2</a></li>
-              <li class="page-item"><a class="page-link" href="#">3</a></li>
-              <li class="page-item"><a class="page-link" href="#">4</a></li>
-              <li class="page-item"><a class="page-link" href="#">Next</a></li>
+              <li class="page-item"><a class="page-link" (click)="paginate_list(previews_count)">Prev</a></li>
+              <li *ngFor="let u_count of users_count_1" class="{{u_count.class}}"><a class="page-link" (click)="paginate_list(u_count.id)">{{u_count.name}}</a></li>
+              <li class="page-item"><a class="page-link" (click)="paginate_list(next_count)">Next</a></li>
             </ul>
           </nav>
         </div>

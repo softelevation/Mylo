@@ -21,17 +21,17 @@ export const navItems: INavData[] = [
   // },
   {
     name: 'Customer',
-    url: '/theme/customer',
+    url: '/customer',
     icon: 'icon-pencil'
   },
   {
     name: 'Brokers',
-    url: '/theme/broker',
+    url: '/broker',
     icon: 'icon-pie-chart'
   },
   {
     name: 'Brokers on Map',
-    url: '/theme/broker-map',
+    url: '/broker-map',
     icon: 'icon-pie-chart'
   }
   
