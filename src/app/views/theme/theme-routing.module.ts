@@ -60,7 +60,7 @@ const routes: Routes = [
         path: 'addusers',
         component: AddUsersComponent,
         data: {
-          title: 'Add broker'
+          title: 'Broker'
         }
       },
       {

@@ -17,6 +17,7 @@ export class AddUsersComponent implements OnInit {
   address: string;
   rating:number;
   ratings_icons = ['','','','',''];
+  add_broker = 'Add Broker';
   private geoCoder;
 
 
@@ -46,6 +47,7 @@ export class AddUsersComponent implements OnInit {
 
     this.activatedRoute.queryParams.subscribe(params => {
         if(params['broker_id'] != undefined){
+                this.add_broker = 'Edit Broker';
             this.appService.brokerProfile({id : params['broker_id']}).subscribe(res => {
                 this.user_id = res['data'].id;
                 let full_name = res['data'].name.split(" ");
