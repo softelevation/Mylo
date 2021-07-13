@@ -4,10 +4,14 @@
     <div class="col-lg-12">
       <div class="card">
         <div class="card-header">
-          <i class="fa fa-align-justify"><span>Brokers List</span></i> 
-          <button type="button" class="btn btn-outline-primary waves-effect waves-light" (click)='addUsers()'>
+          <i class="fa fa-align-justify"><span>Brokers List</span></i>
+          <button
+            type="button"
+            class="btn btn-outline-primary waves-effect waves-light"
+            (click)="addUsers()"
+          >
             Add Broker
-        </button>
+          </button>
         </div>
         <div class="card-body">
           <table class="table table-bordered table-striped table-sm">
@@ -24,25 +28,78 @@
             <tbody>
               <tr *ngFor="let user of users">
                 <!-- <td><img src="assets/img/brand/Final_Logo.png" style="width: 40px; height: 40px; border-radius: 50%;" alt="profile picture"></td> -->
-                <td>{{user.name}}</td>
-                <td>{{user.email}}</td>
-                <td>{{user.address}}</td>
-                <td> <div class="stars"> 
-                        <i [ngClass]="{'ratings-icons': user.rating >= 0 && user.rating != null}" class="fa fa-star"></i> 
-                        <i [ngClass]="{'ratings-icons': user.rating >= 1 && user.rating != null}" class="fa fa-star"></i> 
-                        <i [ngClass]="{'ratings-icons': user.rating >= 2 && user.rating != null}" class="fa fa-star"></i> 
-                        <i [ngClass]="{'ratings-icons': user.rating >= 3 && user.rating != null}" class="fa fa-star"></i> 
-                        <i [ngClass]="{'ratings-icons': user.rating >= 4 && user.rating != null}" class="fa fa-star"></i> 
-                </div></td>
-                <td><i class="fa fa-pencil-square-o" aria-hidden="true"  (click)="editBroker(user.id)"></i><i class="fa fa-trash" aria-hidden="true" (click)="openConfirmationDialog(user.id)"></i></td>
+                <td>{{ user.name }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.address }}</td>
+                <td>
+                  <div class="stars">
+                    <i
+                      [ngClass]="{
+                        'ratings-icons': user.rating >= 0 && user.rating != null
+                      }"
+                      class="fa fa-star"
+                    ></i>
+                    <i
+                      [ngClass]="{
+                        'ratings-icons': user.rating >= 1 && user.rating != null
+                      }"
+                      class="fa fa-star"
+                    ></i>
+                    <i
+                      [ngClass]="{
+                        'ratings-icons': user.rating >= 2 && user.rating != null
+                      }"
+                      class="fa fa-star"
+                    ></i>
+                    <i
+                      [ngClass]="{
+                        'ratings-icons': user.rating >= 3 && user.rating != null
+                      }"
+                      class="fa fa-star"
+                    ></i>
+                    <i
+                      [ngClass]="{
+                        'ratings-icons': user.rating >= 4 && user.rating != null
+                      }"
+                      class="fa fa-star"
+                    ></i>
+                  </div>
+                </td>
+                <td>
+                  <i
+                    class="fa fa-pencil-square-o"
+                    aria-hidden="true"
+                    (click)="editBroker(user.id)"
+                  ></i
+                  ><i
+                    class="fa fa-trash"
+                    aria-hidden="true"
+                    (click)="openConfirmationDialog(user.id)"
+                  ></i>
+                </td>
               </tr>
             </tbody>
           </table>
           <nav>
             <ul class="pagination">
-              <li class="page-item"><a class="page-link" (click)="paginate_list(previews_count)">Prev</a></li>
-              <li *ngFor="let u_count of users_count_1" class="{{u_count.class}}"><a class="page-link" (click)="paginate_list(u_count.id)">{{u_count.name}}</a></li>
-              <li class="page-item"><a class="page-link" (click)="paginate_list(next_count)">Next</a></li>
+              <li class="page-item">
+                <a class="page-link" (click)="paginate_list(previews_count)"
+                  >Prev</a
+                >
+              </li>
+              <li
+                *ngFor="let u_count of users_count_1"
+                class="{{ u_count.class }}"
+              >
+                <a class="page-link" (click)="paginate_list(u_count.id)">{{
+                  u_count.name
+                }}</a>
+              </li>
+              <li class="page-item">
+                <a class="page-link" (click)="paginate_list(next_count)"
+                  >Next</a
+                >
+              </li>
             </ul>
           </nav>
         </div>

@@ -2,11 +2,11 @@ import { Component, Input, OnInit } from "@angular/core";
 import { NgbActiveModal } from "@ng-bootstrap/ng-bootstrap";
 
 @Component({
-  selector: "app-confirmation-dialog",
-  templateUrl: "./confirmation-dialog.component.html",
+  selector: "app-booking-update",
+  templateUrl: "./booking-update.component.html",
   styleUrls: ["./confirmation-dialog.component.css"],
 })
-export class ConfirmationDialogComponent implements OnInit {
+export class BookingUpdateComponent implements OnInit {
   @Input() title: string;
   @Input() message: string;
   @Input() btnOkText: string;
@@ -17,11 +17,13 @@ export class ConfirmationDialogComponent implements OnInit {
   ngOnInit() {}
 
   public decline() {
-    this.activeModal.close(false);
+    this.activeModal.close({ status: false });
   }
 
   public accept() {
-    this.activeModal.close(true);
+    // console.log("wwwwwwwwwwwwwwww");
+    // console.log(this.message);
+    this.activeModal.close({ status: true, message: this.message });
   }
 
   public dismiss() {

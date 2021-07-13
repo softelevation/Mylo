@@ -1,10 +1,10 @@
-import { INavData } from '@coreui/angular';
+import { INavData } from "@coreui/angular";
 
 export const navItems: INavData[] = [
   {
-    name: 'Dashboard',
-    url: '/dashboard',
-    icon: 'icon-speedometer',
+    name: "Dashboard",
+    url: "/dashboard",
+    icon: "icon-speedometer",
     // badge: {
     //   variant: 'info',
     //   text: 'NEW'
@@ -20,19 +20,23 @@ export const navItems: INavData[] = [
   //   icon: 'icon-drop'
   // },
   {
-    name: 'Customer',
-    url: '/customer',
-    icon: 'icon-pencil'
+    name: "Customer",
+    url: "/customer",
+    icon: "icon-pencil",
   },
   {
-    name: 'Brokers',
-    url: '/broker',
-    icon: 'icon-pie-chart'
+    name: "Brokers",
+    url: "/broker",
+    icon: "icon-pie-chart",
   },
   {
-    name: 'Brokers on Map',
-    url: '/broker-map',
-    icon: 'icon-pie-chart'
-  }
-  
+    name: "Brokers on Map",
+    url: "/broker-map",
+    icon: "icon-pie-chart",
+  },
+  {
+    name: "Booking",
+    url: "/booking",
+    icon: "icon-pie-chart",
+  },
 ];

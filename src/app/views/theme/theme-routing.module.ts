@@ -1,81 +1,89 @@
-import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { NgModule } from "@angular/core";
+import { Routes, RouterModule } from "@angular/router";
 
-import { ColorsComponent } from './colors.component';
-import { UsersComponent } from './users.component';
-import { BrokerComponent } from './broker.component';
-import { BrokermapComponent } from './brokermap.component';
-import { CustomersComponent } from './customers.component'; 
-import { AddUsersComponent } from './add-users.component';
-import { TypographyComponent } from './typography.component';
-import { from } from 'rxjs';
+import { ColorsComponent } from "./colors.component";
+import { UsersComponent } from "./users.component";
+import { BrokerComponent } from "./broker.component";
+import { BrokermapComponent } from "./brokermap.component";
+import { CustomersComponent } from "./customers.component";
+import { BookingComponent } from "./booking.component";
+import { AddUsersComponent } from "./add-users.component";
+import { TypographyComponent } from "./typography.component";
+import { from } from "rxjs";
 
 const routes: Routes = [
   {
-    path: '',
+    path: "",
     data: {
-      title: ''
+      title: "",
     },
     children: [
       {
-        path: '',
-        redirectTo: 'colors'
+        path: "",
+        redirectTo: "colors",
       },
       {
-        path: 'colors',
+        path: "colors",
         component: ColorsComponent,
         data: {
-          title: 'Colors'
-        }
+          title: "Colors",
+        },
       },
       {
-        path: 'customer',
+        path: "customer",
         component: UsersComponent,
         data: {
-          title: 'Customer'
-        }
+          title: "Customer",
+        },
       },
-	  {
-        path: 'broker',
+      {
+        path: "broker",
         component: BrokerComponent,
         data: {
-          title: 'Broker'
-        }
+          title: "Broker",
+        },
       },
       {
-        path: 'broker-map',
+        path: "broker-map",
         component: BrokermapComponent,
         data: {
-          title: 'Broker-map'
-        }
+          title: "Broker-map",
+        },
       },
       {
-        path: 'customers',
+        path: "booking",
+        component: BookingComponent,
+        data: {
+          title: "Booking",
+        },
+      },
+      {
+        path: "customers",
         component: CustomersComponent,
         data: {
-          title: 'Customers'
-        }
+          title: "Customers",
+        },
       },
       {
-        path: 'addusers',
+        path: "addusers",
         component: AddUsersComponent,
         data: {
-          title: 'Broker'
-        }
+          title: "Broker",
+        },
       },
       {
-        path: 'typography',
+        path: "typography",
         component: TypographyComponent,
         data: {
-          title: 'Typography'
-        }
-      }
-    ]
-  }
+          title: "Typography",
+        },
+      },
+    ],
+  },
 ];
 
 @NgModule({
   imports: [RouterModule.forChild(routes)],
-  exports: [RouterModule]
+  exports: [RouterModule],
 })
 export class ThemeRoutingModule {}
