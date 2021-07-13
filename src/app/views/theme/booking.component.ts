@@ -21,17 +21,26 @@ export class BookingComponent implements OnInit {
   }
 
   editBooking(id) {
+    // console.log(this.users[id]);
     let selectedUser = this.users[id].created_at;
+    let booking_id = this.users[id].id;
     this.confirmationDialogService
-      .confirm("Please confirm..", selectedUser)
+      .confirm("Change booking", selectedUser)
       .then((confirmed) => {
-        console.log(confirmed);
-        // if (confirmed) {
-        //   this.manageData.transform(this.users, id);
-        //   this.appService
-        //     .deleteData({ id: id, action: "customer" })
-        //     .subscribe((res) => {});
-        // }
+        let booking_change = {
+          book_id: booking_id,
+          input_date: confirmed.input_date,
+          input_time: confirmed.input_time
+        }
+          this.appService
+            .updateBooking(booking_change)
+            .subscribe((res) => {
+                if(res.status){
+                    this.ngOnInit();
+                }
+                // console.log(res);
+                
+            });
       })
       .catch(() =>
         console.log(

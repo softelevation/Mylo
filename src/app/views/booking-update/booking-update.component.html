@@ -5,12 +5,20 @@
   </button>
 </div>
 <div class="modal-body">
+  <form #orderForm="ngForm">
   <input
-    type="text"
-    value="{{ message | date: shortDate }}"
-    [(ngModel)]="message"
-    name="message"
+    type="date"
+    [(ngModel)]="order.input_date"
+    name="input_date"
+    #input_date	="ngModel"
   />
+  <input
+    type="time"
+    [(ngModel)]="order.input_time"
+    name="input_time"
+    #input_time	="ngModel"
+  />
+  </form>
 </div>
 <div class="modal-footer">
   <button type="button" class="btn btn-danger" (click)="decline()">
