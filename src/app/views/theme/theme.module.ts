@@ -14,6 +14,9 @@ import { CustomersComponent } from "./customers.component";
 import { BookingComponent } from "./booking.component";
 import { AddUsersComponent } from "./add-users.component";
 import { TypographyComponent } from "./typography.component";
+
+import { Privacypolicy } from "./privacy-policy/privacypolicy.component";
+
 import { ConfirmationDialogComponent } from "./../confirmation-dialog/confirmation-dialog.component";
 import { ConfirmationDialogService } from "./../confirmation-dialog/confirmation-dialog.service";
 import { BookingUpdateComponent } from "./../booking-update/booking-update.component";
@@ -38,6 +41,7 @@ import { from } from "rxjs";
     ColorsComponent,
     UsersComponent,
     BrokerComponent,
+    Privacypolicy,
     BrokermapComponent,
     CustomersComponent,
     BookingComponent,
