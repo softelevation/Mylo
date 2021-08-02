@@ -3,125 +3,219 @@
     <div class="col-sm-12">
       <div class="card">
         <div class="card-header">
-          <strong>{{add_broker}}</strong>
+          <strong>{{ add_broker }}</strong>
         </div>
         <form [formGroup]="userForm">
-        <div class="card-body">
-          <div class="row">
-            <div class="col-md-6 form-group">
-              <label for="company">Upload Profile</label>
-              <div class="avatar-upload">
-                <div class="avatar-edit">
-                    <input type='file' id="imageUpload" accept=".png, .jpg, .jpeg" />
+          <div class="card-body">
+            <div class="row">
+              <div class="col-md-6 form-group">
+                <label for="company">Upload Profile</label>
+                <div class="avatar-upload">
+                  <div class="avatar-edit">
+                    <input
+                      type="file"
+                      id="imageUpload"
+                      accept=".png, .jpg, .jpeg"
+                    />
                     <label for="imageUpload"></label>
+                  </div>
+                  <div class="avatar-preview">
+                    <div
+                      id="imagePreview"
+                      style="
+                        background-image: url(http://i.pravatar.cc/500?img=7);
+                      "
+                    ></div>
+                  </div>
                 </div>
-                <div class="avatar-preview">
-                    <div id="imagePreview" style="background-image: url(http://i.pravatar.cc/500?img=7);">
-                    </div>
+              </div>
+              <div class="col-md-6 form-group">
+                <div class="stars apprating d-flex justify-content-end">
+                  <i class="fa fa-star"></i> <i class="fa fa-star"></i>
+                  <i class="fa fa-star"></i> <i class="fa fa-star"></i>
                 </div>
               </div>
             </div>
-            <div class="col-md-6 form-group">
-              <div class="stars apprating d-flex justify-content-end"> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> <i class="fa fa-star"></i> </div>
-            </div>
-          </div>
-		  <div class="row">
-        <div class="col-md-6 form-group">
-          <label for="company">First Name</label>
-          <input type="text" formControlName="first_name" class="form-control" id="company">
-          </div>
-			  <div class="col-md-6 form-group">
-				<label for="company">Last Name</label>
-				<input type="text" formControlName="last_name" class="form-control" id="company">
-			  </div>
-			  <div class="col-md-6 form-group">
-				<label for="vat">Email</label>
-				<input type="email" formControlName="email" class="form-control" id="vat">
-        </div>
-        <div class="col-md-6 form-group">
-          <label for="vat">Phone Number</label>
-          <input type="text" formControlName="phone_no" class="form-control" id="vat">
-          </div>
-          <div class="col-md-6 form-group">
-            <label for="vat">Qualifications</label>
-            <input type="text" formControlName="qualifications" class="form-control" id="vat">
-            </div>
-            <div class="col-md-6 form-group">
-              <label for="vat">Location</label>
-              <input type="text" formControlName="address" class="form-control" (keydown.enter)="$event.preventDefault()" placeholder="Search Nearest Location" autocorrect="off" autocapitalize="off" spellcheck="off" type="text" #search>
+            <div class="row">
+              <div class="col-md-6 form-group">
+                <label for="company">First Name</label>
+                <input
+                  type="text"
+                  formControlName="first_name"
+                  class="form-control"
+                  id="company"
+                />
               </div>
-            <div class="col-md-6 form-group col-sm-8">
-              <label for="city">Banks</label>
-              <div class="banks-card">
-                  <select  formControlName="banks" class="form-control">
-                    <option>Oriental Bank of Commerce, Overseas Bank </option>
+              <div class="col-md-6 form-group">
+                <label for="company">Last Name</label>
+                <input
+                  type="text"
+                  formControlName="last_name"
+                  class="form-control"
+                  id="company"
+                />
+              </div>
+              <div class="col-md-6 form-group">
+                <label for="vat">Email</label>
+                <input
+                  type="email"
+                  formControlName="email"
+                  class="form-control"
+                  id="vat"
+                  (input)="email_valid_check()"
+                />
+                <div *ngIf="is_valid_email && inputbroker.email.errors" class="text-danger">
+                  Email must be a valid email address
+                </div>
+              </div>
+              <div class="col-md-6 form-group">
+                <label for="vat">Phone Number</label>
+                <input
+                  type="text"
+                  formControlName="phone_no"
+                  class="form-control"
+                  id="vat"
+                />
+              </div>
+              <div class="col-md-6 form-group">
+                <label for="vat">Qualifications</label>
+                <input
+                  type="text"
+                  formControlName="qualifications"
+                  class="form-control"
+                  id="vat"
+                />
+              </div>
+              <div class="col-md-6 form-group">
+                <label for="vat">Location</label>
+                <input
+                  type="text"
+                  formControlName="address"
+                  class="form-control"
+                  (keydown.enter)="$event.preventDefault()"
+                  placeholder="Search Nearest Location"
+                  autocorrect="off"
+                  autocapitalize="off"
+                  spellcheck="off"
+                  type="text"
+                  #search
+                />
+              </div>
+              <div class="col-md-6 form-group col-sm-8">
+                <label for="city">Banks</label>
+                <div class="banks-card">
+                  <select formControlName="banks" class="form-control">
+                    <option>Oriental Bank of Commerce, Overseas Bank</option>
                     <option>Overseas Bank</option>
                     <option>Central Bank</option>
                     <option>Canara Bank</option>
                   </select>
+                </div>
+              </div>
+              <div class="col-md-6 form-group">
+                <label for="vat">About Me</label>
+                <textarea formControlName="about_me" class="form-control">
+                </textarea>
               </div>
             </div>
-            <div class="col-md-6 form-group">
-              <label for="vat">About Me</label>
-              <textarea formControlName="about_me" class="form-control">
-              </textarea>
-              </div>
-          </div>
-          <div class="google-review-section row mb-5">
-            <div class="col-md-12"><h5 class="custom-google-heading mb-4 mt-4">Reviews</h5></div>
-            <div class="re-viewSection">
+            <div class="google-review-section row mb-5">
               <div class="col-md-12">
-                <div class="testimonial-box">	
-                  <div class="d-flex">						
-                    <img src="https://images.pexels.com/photos/206615/pexels-photo-206615.jpeg?w=940&h=650&auto=compress&cs=tinysrgb" class="img-responsive" alt="" width="90">
-                    <div class="name-rating ml-3">
-                      <h5>James Baker</h5>
-                      <div class="">
-                        <i [ngClass]="{'ratings-icons': rating >= 0 && rating != null}" class="fa fa-star" (click)="changeReting(0,ratings_icons[0])"></i>
-                        <i [ngClass]="{'ratings-icons': rating >= 1 && rating != null}" class="fa fa-star" (click)="changeReting(1,ratings_icons[1])"></i>
-                        <i [ngClass]="{'ratings-icons': rating >= 2 && rating != null}" class="fa fa-star" (click)="changeReting(2,ratings_icons[2])"></i>
-                        <i [ngClass]="{'ratings-icons': rating >= 3 && rating != null}" class="fa fa-star" (click)="changeReting(3,ratings_icons[3])"></i>
-                        <i [ngClass]="{'ratings-icons': rating >= 4 && rating != null}" class="fa fa-star" (click)="changeReting(4,ratings_icons[4])"></i>
+                <h5 class="custom-google-heading mb-4 mt-4">Reviews</h5>
+              </div>
+              <div class="re-viewSection">
+                <div class="col-md-12">
+                  <div class="testimonial-box">
+                    <div class="d-flex">
+                      <img
+                        src="https://images.pexels.com/photos/206615/pexels-photo-206615.jpeg?w=940&h=650&auto=compress&cs=tinysrgb"
+                        class="img-responsive"
+                        alt=""
+                        width="90"
+                      />
+                      <div class="name-rating ml-3">
+                        <h5>James Baker</h5>
+                        <div class="">
+                          <i
+                            [ngClass]="{
+                              'ratings-icons': rating >= 0 && rating != null
+                            }"
+                            class="fa fa-star"
+                            (click)="changeReting(0, ratings_icons[0])"
+                          ></i>
+                          <i
+                            [ngClass]="{
+                              'ratings-icons': rating >= 1 && rating != null
+                            }"
+                            class="fa fa-star"
+                            (click)="changeReting(1, ratings_icons[1])"
+                          ></i>
+                          <i
+                            [ngClass]="{
+                              'ratings-icons': rating >= 2 && rating != null
+                            }"
+                            class="fa fa-star"
+                            (click)="changeReting(2, ratings_icons[2])"
+                          ></i>
+                          <i
+                            [ngClass]="{
+                              'ratings-icons': rating >= 3 && rating != null
+                            }"
+                            class="fa fa-star"
+                            (click)="changeReting(3, ratings_icons[3])"
+                          ></i>
+                          <i
+                            [ngClass]="{
+                              'ratings-icons': rating >= 4 && rating != null
+                            }"
+                            class="fa fa-star"
+                            (click)="changeReting(4, ratings_icons[4])"
+                          ></i>
+                        </div>
                       </div>
                     </div>
+                    <p>
+                      Lorem ipsum dolor sit amet, consectetur adipiscing elit.
+                      Proin sapien augue, dictum et gravida et
+                    </p>
                   </div>
-                  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Proin sapien augue, dictum et gravida et</p>									 							
-                </div>	
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div class="col-md-6 form-group col-sm-8">
+                <button
+                  type="submit"
+                  class="btn btn-sm btn-success custom-btn"
+                  [disabled]="!userForm.valid"
+                  (click)="addUser()"
+                >
+                  <i class="fa fa-dot-circle-o"></i> Submit
+                </button>
               </div>
             </div>
           </div>
-		    <div class="row">
-            <div class="col-md-6 form-group col-sm-8">
-			    <button type="submit" class="btn btn-sm btn-success custom-btn" [disabled]="!userForm.valid" (click)="addUser()"><i class="fa fa-dot-circle-o"></i> Submit</button>
-            </div>
-          </div>
-		  
-        </div>
-      </form>
+        </form>
       </div>
     </div>
   </div>
 </div>
 
-
 <script>
   function readURL(input) {
-
     if (input.files && input.files[0]) {
-        var reader = new FileReader();
-        
-        reader.onload = function(e) {
-          $('#imagePreview').attr('src', e.target.result);
-        }
-        
-        reader.readAsDataURL(input.files[0]); // convert to base64 string
-      }
+      var reader = new FileReader();
+
+      reader.onload = function (e) {
+        $("#imagePreview").attr("src", e.target.result);
+      };
+
+      reader.readAsDataURL(input.files[0]); // convert to base64 string
+    }
 
     // if (input.files && input.files[0]) {
     //     var reader = new FileReader();
     //     reader.onload = function(e) {
     //       $('#imagePreview').attr('src', e.target.result);
-
 
     //         $('#imagePreview').css('background-image', 'url('+e.target.result +')');
     //         $('#imagePreview').hide();
@@ -129,8 +223,8 @@
     //     }
     //     reader.readAsDataURL(input.files[0]);
     // }
-}
-$("#imageUpload").change(function() {
+  }
+  $("#imageUpload").change(function () {
     readURL(this);
-});
+  });
 </script>

@@ -3,6 +3,7 @@ import { AppServiceService } from "./../../app-service.service";
 import { Router } from "@angular/router";
 import { ConfirmationDialogService } from "./../confirmation-dialog/confirmation-dialog.service";
 import { ManageData } from "./manage-data";
+import { ToastrService } from "ngx-toastr";
 
 @Component({
   templateUrl: "broker.component.html",
@@ -18,11 +19,12 @@ export class BrokerComponent implements OnInit {
     private appService: AppServiceService,
     private confirmationDialogService: ConfirmationDialogService,
     private router: Router,
-    private manageData: ManageData
+    private manageData: ManageData,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit(): void {
-    this.appService.getAllBroker().subscribe((data: getAllUsers) => {
+    this.appService.getAllBrokerList().subscribe((data: getAllUsers) => {
       this.users = data["data"];
       this.paginate_custom(data["message"], 0);
     });
@@ -72,7 +74,9 @@ export class BrokerComponent implements OnInit {
           this.manageData.transform(this.users, id);
           this.appService
             .deleteData({ id: id, action: "customer" })
-            .subscribe((res) => {});
+            .subscribe((res) => {
+              this.toastr.success("Broker delete successfully", "Success");
+            });
         }
       })
       .catch(() =>

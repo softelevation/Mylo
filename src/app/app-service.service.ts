@@ -43,6 +43,12 @@ export class AppServiceService {
       .pipe(catchError(this.handleError));
   }
 
+  getAllBrokerList() {
+    return this.http
+      .get<any>(this.serverUrl + "user/web-brokers")
+      .pipe(catchError(this.handleError));
+  }
+
   getAllBroker() {
     return this.http
       .post<getAllUsers>(this.serverUrl + "user/brokers")
