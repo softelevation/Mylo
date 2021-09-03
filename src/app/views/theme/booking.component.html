@@ -4,8 +4,25 @@
     <div class="col-lg-12">
       <div class="card">
         <div class="card-header">
-          <i class="fa fa-align-justify"></i> Booking
+          <i class="fa fa-align-justify">
+            <button
+              type="button"
+              class="{{ secondary_button_class }}"
+              (click)="upComingList()"
+            >
+              Up coming
+            </button>
+            <button
+              type="button"
+              class="{{ success_button_class }}"
+              (click)="completedList()"
+            >
+              Completed
+            </button>
+          </i>
+          <p>{{ list_title }}</p>
         </div>
+
         <div class="card-body">
           <table class="table table-bordered table-striped table-sm">
             <thead>
@@ -15,7 +32,7 @@
                 <th>Email</th>
                 <th>Assign at</th>
                 <th>Location</th>
-                <th>Action</th>
+                <th *ngIf="list_title === 'Up coming data'">Action</th>
               </tr>
             </thead>
             <tbody>
@@ -25,7 +42,7 @@
                 <td>{{ user.email }}</td>
                 <td>{{ user.created_at | date: "medium" }}</td>
                 <td>{{ user.location }}</td>
-                <td>
+                <td *ngIf="list_title === 'Up coming data'">
                   <i
                     class="fa fa-pencil-square-o"
                     aria-hidden="true"

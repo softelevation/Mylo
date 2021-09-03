@@ -8,7 +8,12 @@ import { ToastrService } from "ngx-toastr";
 })
 export class BookingComponent implements OnInit {
   users: getAllUsers;
+  upcoming_user: getAllUsers;
+  completed_user: getAllUsers;
+  secondary_button_class = "btn btn-secondary waves-effect waves-light";
+  success_button_class = "btn btn-success waves-effect waves-light";
   error: string;
+  list_title = "Up coming data";
   constructor(
     private appService: AppServiceService, // private confirmationDialogService: BookingUpdateService
     private confirmationDialogService: BookingUpdateService,
@@ -16,10 +21,25 @@ export class BookingComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
-    this.appService.getBooking().subscribe(
-      (data: getAllUsers) => (this.users = data["data"]),
-      (error) => (this.error = error)
-    );
+    this.appService.getBooking().subscribe((data: getAllUsers) => {
+      this.users = data["data"].upcoming;
+      this.upcoming_user = data["data"].upcoming;
+      this.completed_user = data["data"].completed;
+    });
+  }
+
+  upComingList() {
+    this.list_title = "Up coming data";
+    this.users = this.upcoming_user;
+    this.secondary_button_class = "btn btn-secondary waves-effect waves-light";
+    this.success_button_class = "btn btn-success waves-effect waves-light";
+  }
+
+  completedList() {
+    this.list_title = "Completed data";
+    this.users = this.completed_user;
+    this.secondary_button_class = "btn btn-success waves-effect waves-light";
+    this.success_button_class = "btn btn-secondary waves-effect waves-light";
   }
 
   editBooking(id) {
