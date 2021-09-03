@@ -4,36 +4,59 @@
     <div class="col-lg-12">
       <div class="card">
         <div class="card-header">
-          <i class="fa fa-align-justify"> Customers list</i> 
+          <i class="fa fa-align-justify"> Customers list</i>
         </div>
         <div class="card-body">
           <table class="table table-bordered table-striped table-sm">
             <thead>
               <tr>
+                <th>Sr no.</th>
                 <th>Name</th>
                 <th>Email</th>
+                <th>Phone no</th>
                 <th>Status</th>
                 <th>Action</th>
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let user of users">
-                <td>{{user.name}}</td>
-                <td>{{user.email}}</td>
+              <tr *ngFor="let user of users; let i = index">
+                <td>{{ ids + i + 1 }}</td>
+                <td>{{ user.name }}</td>
+                <td>{{ user.email }}</td>
+                <td>{{ user.phone_no }}</td>
                 <td>
-                  <span class="badge badge-success">
-                      active
-                  </span>
+                  <span class="badge badge-success"> active </span>
                 </td>
-                <td><i class="fa fa-trash" aria-hidden="true"  (click)="openConfirmationDialog(user.id)"></i></td>
+                <td>
+                  <i
+                    class="fa fa-trash"
+                    aria-hidden="true"
+                    (click)="openConfirmationDialog(user.id)"
+                  ></i>
+                </td>
               </tr>
             </tbody>
           </table>
           <nav>
             <ul class="pagination">
-              <li class="page-item"><a class="page-link" (click)="paginate_list(previews_count)">Prev</a></li>
-              <li *ngFor="let u_count of users_count_1" class="{{u_count.class}}"><a class="page-link" (click)="paginate_list(u_count.id)">{{u_count.name}}</a></li>
-              <li class="page-item"><a class="page-link" (click)="paginate_list(next_count)">Next</a></li>
+              <li class="page-item">
+                <a class="page-link" (click)="paginate_list(previews_count)"
+                  >Prev</a
+                >
+              </li>
+              <li
+                *ngFor="let u_count of users_count_1"
+                class="{{ u_count.class }}"
+              >
+                <a class="page-link" (click)="paginate_list(u_count.id)">{{
+                  u_count.name
+                }}</a>
+              </li>
+              <li class="page-item">
+                <a class="page-link" (click)="paginate_list(next_count)"
+                  >Next</a
+                >
+              </li>
             </ul>
           </nav>
         </div>

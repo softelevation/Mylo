@@ -10,17 +10,21 @@
           <table class="table table-bordered table-striped table-sm">
             <thead>
               <tr>
+                <th>Sr no.</th>
                 <th>Name</th>
                 <th>Email</th>
                 <th>Assign at</th>
+                <th>Location</th>
                 <th>Action</th>
               </tr>
             </thead>
             <tbody>
               <tr *ngFor="let user of users; let indexOfelement = index">
+                <td>{{ indexOfelement + 1 }}</td>
                 <td>{{ user.name }}</td>
                 <td>{{ user.email }}</td>
                 <td>{{ user.created_at | date: "medium" }}</td>
+                <td>{{ user.location }}</td>
                 <td>
                   <i
                     class="fa fa-pencil-square-o"

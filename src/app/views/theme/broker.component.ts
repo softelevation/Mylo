@@ -12,8 +12,10 @@ export class BrokerComponent implements OnInit {
   users: getAllUsers;
   users_count: number;
   next_count: number;
+  ids: number;
   previews_count: number;
   users_count_1 = [];
+
   error: string;
   constructor(
     private appService: AppServiceService,
@@ -25,6 +27,7 @@ export class BrokerComponent implements OnInit {
 
   ngOnInit(): void {
     this.appService.getAllBrokerList().subscribe((data: getAllUsers) => {
+      this.ids = 0;
       this.users = data["data"];
       this.paginate_custom(data["message"], 0);
     });
@@ -53,6 +56,7 @@ export class BrokerComponent implements OnInit {
     this.appService
       .filterAllBrokers({ limit_to: ids })
       .subscribe((data: getAllUsers) => {
+        this.ids = ids;
         this.users = data["data"];
         this.paginate_custom(data["message"], id);
       });

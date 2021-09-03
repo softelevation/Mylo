@@ -3,6 +3,7 @@ import { AppServiceService } from "./../../app-service.service";
 import { Router } from "@angular/router";
 import { ConfirmationDialogService } from "./../confirmation-dialog/confirmation-dialog.service";
 import { ManageData } from "./manage-data";
+import { ToastrService } from "ngx-toastr";
 
 @Component({
   templateUrl: "users.component.html",
@@ -11,6 +12,7 @@ export class UsersComponent implements OnInit {
   users: getAllUsers;
   users_count: number;
   next_count: number;
+  ids: number;
   previews_count: number;
   users_count_1 = [];
   error: string;
@@ -18,11 +20,13 @@ export class UsersComponent implements OnInit {
     private appService: AppServiceService,
     private confirmationDialogService: ConfirmationDialogService,
     private router: Router,
-    private manageData: ManageData
+    private manageData: ManageData,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit(): void {
     this.appService.getAllUsers().subscribe((data: getAllUsers) => {
+      this.ids = 0;
       this.users = data["data"];
       this.paginate_custom(data["message"], 0);
     });
@@ -51,6 +55,7 @@ export class UsersComponent implements OnInit {
     this.appService
       .filterAllUsers({ limit_to: ids })
       .subscribe((data: getAllUsers) => {
+        this.ids = ids;
         this.users = data["data"];
         this.paginate_custom(data["message"], id);
       });
@@ -64,7 +69,9 @@ export class UsersComponent implements OnInit {
           this.manageData.transform(this.users, id);
           this.appService
             .deleteData({ id: id, action: "customer" })
-            .subscribe((res) => {});
+            .subscribe((res) => {
+              this.toastr.success("Customer delete successfully", "Success");
+            });
         }
       })
       .catch(() =>

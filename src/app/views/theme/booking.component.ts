@@ -1,6 +1,7 @@
 import { Component, OnInit } from "@angular/core";
 import { AppServiceService } from "./../../app-service.service";
 import { BookingUpdateService } from "./../booking-update/booking-update.service";
+import { ToastrService } from "ngx-toastr";
 
 @Component({
   templateUrl: "booking.component.html",
@@ -10,7 +11,8 @@ export class BookingComponent implements OnInit {
   error: string;
   constructor(
     private appService: AppServiceService, // private confirmationDialogService: BookingUpdateService
-    private confirmationDialogService: BookingUpdateService
+    private confirmationDialogService: BookingUpdateService,
+    private toastr: ToastrService
   ) {}
 
   ngOnInit(): void {
@@ -21,7 +23,6 @@ export class BookingComponent implements OnInit {
   }
 
   editBooking(id) {
-    // console.log(this.users[id]);
     let selectedUser = this.users[id].created_at;
     let booking_id = this.users[id].id;
     this.confirmationDialogService
@@ -30,43 +31,22 @@ export class BookingComponent implements OnInit {
         let booking_change = {
           book_id: booking_id,
           input_date: confirmed.input_date,
-          input_time: confirmed.input_time
-        }
-          this.appService
-            .updateBooking(booking_change)
-            .subscribe((res) => {
-                if(res.status){
-                    this.ngOnInit();
-                }
-                // console.log(res);
-                
-            });
+          input_time: confirmed.input_time,
+        };
+        this.appService.updateBooking(booking_change).subscribe((res) => {
+          if (res.status) {
+            let res_message =
+              res.message.charAt(0).toUpperCase() + res.message.slice(1);
+            this.toastr.success(res_message, "Success");
+            this.ngOnInit();
+          }
+        });
       })
       .catch(() =>
         console.log(
           "User dismissed the dialog (e.g., by using ESC, clicking the cross icon, or clicking outside the dialog)"
         )
       );
-    //
-    // console.log(selectedUser);
-
-    // console.log(selectedUser);
-    // this.confirmationDialogService
-    //   .confirm("Please confirm..", "Do you really want to delete this... ?")
-    //   .then((confirmed) => {
-    //     if (confirmed) {
-    //       console.log(id);
-    //       // this.manageData.transform(this.users, id);
-    //       // this.appService
-    //       //   .deleteData({ id: id, action: "customer" })
-    //       //   .subscribe((res) => {});
-    //     }
-    //   })
-    //   .catch(() =>
-    //     console.log(
-    //       "User dismissed the dialog (e.g., by using ESC, clicking the cross icon, or clicking outside the dialog)"
-    //     )
-    //   );
   }
 }
 

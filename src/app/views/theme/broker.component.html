@@ -18,18 +18,22 @@
             <thead>
               <tr>
                 <!-- <th>Profile</th> -->
+                <th>Sr no.</th>
                 <th>Name</th>
                 <th>Email</th>
+                <th>Phone no</th>
                 <th>Location</th>
                 <th>Review</th>
                 <th>Action</th>
               </tr>
             </thead>
             <tbody>
-              <tr *ngFor="let user of users">
+              <tr *ngFor="let user of users; let i = index">
                 <!-- <td><img src="assets/img/brand/Final_Logo.png" style="width: 40px; height: 40px; border-radius: 50%;" alt="profile picture"></td> -->
+                <td>{{ ids + i + 1 }}</td>
                 <td>{{ user.name }}</td>
                 <td>{{ user.email }}</td>
+                <td>{{ user.phone_no }}</td>
                 <td>{{ user.address }}</td>
                 <td>
                   <div class="stars">

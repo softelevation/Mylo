@@ -18,12 +18,12 @@
             </thead>
             <tbody>
               <tr *ngFor="let user of users">
-                <td>{{user.name}}</td>
-                <td>{{user.email}}</td>
+                <td>{{ user.name }}</td>
+                <td>{{ user.email }}</td>
                 <td>Customer</td>
                 <td>
                   <span class="badge badge-success">
-                      {{(user.status == '1') ? "success":"broker"}}
+                    {{ user.status == "1" ? "success" : "broker" }}
                   </span>
                 </td>
               </tr>
