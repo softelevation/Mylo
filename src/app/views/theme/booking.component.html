@@ -28,8 +28,9 @@
             <thead>
               <tr>
                 <th>Sr no.</th>
-                <th>Name</th>
-                <th>Email</th>
+                <th>Customer name</th>
+                <th>Customer email</th>
+                <th>Broker name</th>
                 <th>Assign at</th>
                 <th>Location</th>
                 <th *ngIf="list_title === 'Up coming data'">Action</th>
@@ -38,8 +39,9 @@
             <tbody>
               <tr *ngFor="let user of users; let indexOfelement = index">
                 <td>{{ indexOfelement + 1 }}</td>
-                <td>{{ user.name }}</td>
-                <td>{{ user.email }}</td>
+                <td>{{ user.cus_name }}</td>
+                <td>{{ user.cus_email }}</td>
+                <td>{{ user.brok_name ? user.brok_name : "N/A" }}</td>
                 <td>{{ user.created_at | date: "medium" }}</td>
                 <td>{{ user.location }}</td>
                 <td *ngIf="list_title === 'Up coming data'">
