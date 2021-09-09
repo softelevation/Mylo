@@ -19,9 +19,9 @@
               <tr>
                 <!-- <th>Profile</th> -->
                 <th>Sr no.</th>
-                <th>Name</th>
-                <th>Email</th>
-                <th>Phone no</th>
+                <th>Broker name</th>
+                <th>Broker Email</th>
+                <th>Broker Phone no</th>
                 <th>Location</th>
                 <th>Review</th>
                 <th>Action</th>
@@ -70,16 +70,58 @@
                   </div>
                 </td>
                 <td>
-                  <i
-                    class="fa fa-pencil-square-o"
-                    aria-hidden="true"
-                    (click)="editBroker(user.id)"
-                  ></i
-                  ><i
-                    class="fa fa-trash"
-                    aria-hidden="true"
-                    (click)="openConfirmationDialog(user.id)"
-                  ></i>
+                  <div class="dropdown">
+                    <a
+                      class="action_icons dropdown-toggle"
+                      id="dropdownMenuButton"
+                      data-toggle="dropdown"
+                      aria-haspopup="true"
+                      aria-expanded="false"
+                      href="javascript:void(0)"
+                      ><i class="fas fa-list text-grey" aria-hidden="true"></i>
+                      Actions</a
+                    >
+                    <div
+                      class="dropdown-menu"
+                      aria-labelledby="dropdownMenuButton"
+                      x-placement="top-start"
+                      style="
+                        position: absolute;
+                        will-change: transform;
+                        top: 0px;
+                        left: 0px;
+                        transform: translate3d(0px, 0px, 0px);
+                      "
+                    >
+                      <a
+                        href="javascript:void(0)"
+                        class="dropdown-item"
+                        (click)="editBroker(user.id)"
+                        ><i
+                          class="fa fa-pencil-square-o"
+                          aria-hidden="true"
+                        ></i>
+                        Edit</a
+                      >
+                      <a
+                        href="javascript:void(0)"
+                        class="dropdown-item"
+                        (click)="openConfirmationDialog(user.id)"
+                        ><i
+                          class="fas fa-trash text-grey"
+                          aria-hidden="true"
+                        ></i>
+                        Delete</a
+                      >
+                      <a
+                        href="javascript:void(0)"
+                        class="dropdown-item"
+                        (click)="changeBrokerStatus(user.id)"
+                        ><i class="fas fa-eye text-grey" aria-hidden="true"></i>
+                        Change Status</a
+                      >
+                    </div>
+                  </div>
                 </td>
               </tr>
             </tbody>

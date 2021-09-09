@@ -61,6 +61,15 @@ export class UsersComponent implements OnInit {
       });
   }
 
+  changeCustomerStatus(id) {
+    this.appService
+      .deleteData({ id: id, action: "customer_status" })
+      .subscribe((res) => {
+        this.toastr.success("Customer status change successfully", "Success");
+        this.ngOnInit();
+      });
+  }
+
   openConfirmationDialog(id) {
     this.confirmationDialogService
       .confirm("Please confirm..", "Do you really want to delete this... ?")

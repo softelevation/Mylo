@@ -70,6 +70,14 @@ export class BrokerComponent implements OnInit {
     window.location.assign("#/addusers?broker_id=" + id);
   }
 
+  changeBrokerStatus(id) {
+    this.appService
+      .deleteData({ id: id, action: "customer_status" })
+      .subscribe((res) => {
+        this.toastr.success("Broker status change successfully", "Success");
+      });
+  }
+
   openConfirmationDialog(id) {
     this.confirmationDialogService
       .confirm("Please confirm..", "Do you really want to delete this... ?")
