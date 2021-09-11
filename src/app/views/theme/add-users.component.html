@@ -13,18 +13,18 @@
                 <div class="avatar-upload">
                   <div class="avatar-edit">
                     <input
+                      #file
                       type="file"
                       id="imageUpload"
                       accept=".png, .jpg, .jpeg"
+                      (change)="previewFile(file.files)"
                     />
                     <label for="imageUpload"></label>
                   </div>
                   <div class="avatar-preview">
                     <div
+                      [style.background-image]="'url(' + imgURL + ')'"
                       id="imagePreview"
-                      style="
-                        background-image: url(http://i.pravatar.cc/500?img=7);
-                      "
                     ></div>
                   </div>
                 </div>
@@ -64,7 +64,10 @@
                   id="vat"
                   (input)="email_valid_check()"
                 />
-                <div *ngIf="is_valid_email && inputbroker.email.errors" class="text-danger">
+                <div
+                  *ngIf="is_valid_email && inputbroker.email.errors"
+                  class="text-danger"
+                >
                   Email must be a valid email address
                 </div>
               </div>

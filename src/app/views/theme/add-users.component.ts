@@ -10,11 +10,13 @@ import { FormBuilder, Validators, FormGroup } from "@angular/forms";
 import { Router, ActivatedRoute, Params } from "@angular/router";
 import { AppServiceService } from "./../../app-service.service";
 import { ToastrService } from "ngx-toastr";
+import { environment } from "./../../../environments/environment";
 
 @Component({
   templateUrl: "add-users.component.html",
 })
 export class AddUsersComponent implements OnInit {
+  serverUrl = environment.API;
   user_id: number;
   userForm: FormGroup;
   latitude: number;
@@ -25,6 +27,10 @@ export class AddUsersComponent implements OnInit {
   ratings_icons = ["", "", "", "", ""];
   is_valid_email = false;
   add_broker = "Add Broker";
+  public imagePath;
+  imgURL: string;
+  imgURL_name: any;
+  public message: string;
   private geoCoder;
 
   @ViewChild("search")
@@ -41,6 +47,7 @@ export class AddUsersComponent implements OnInit {
   ) {}
 
   ngOnInit(): void {
+    this.imgURL = "http://i.pravatar.cc/500?img=7";
     this.userForm = this.fb.group({
       first_name: ["", Validators.required],
       last_name: ["", Validators.required],
@@ -81,6 +88,7 @@ export class AddUsersComponent implements OnInit {
             this.latitude = res["data"].latitude;
             this.longitude = res["data"].longitude;
             this.rating = res["data"].rating;
+            this.imgURL = this.serverUrl + res["data"].image;
           });
       } else {
         this.user_id = 0;
@@ -178,17 +186,59 @@ export class AddUsersComponent implements OnInit {
       address: this.address,
       rating: this.rating,
     };
+    const formData = new FormData();
+    formData.append(
+      "name",
+      this.userForm.get("first_name").value +
+        " " +
+        this.userForm.get("last_name").value
+    );
+    formData.append("email", this.userForm.get("email").value);
+    formData.append("phone_no", this.userForm.get("phone_no").value);
+    formData.append(
+      "qualifications",
+      this.userForm.get("qualifications").value
+    );
+    formData.append("banks", this.userForm.get("banks").value);
+    formData.append("about_me", this.userForm.get("about_me").value);
+    formData.append("roll_id", "2");
+    formData.append("latitude", obj.latitude);
+    formData.append("longitude", obj.longitude);
+    formData.append("address", obj.address);
+    formData.append("rating", obj.rating);
+    if (this.imgURL_name && this.imgURL_name != "undefined") {
+      formData.append("image", this.imgURL_name);
+    }
     if (this.user_id) {
-      this.appService.updateUsers(obj, this.user_id).subscribe((data) => {
+      this.appService.updateUsers(formData, this.user_id).subscribe((data) => {
         this.router.navigate(["broker"]);
         this.toastr.success("Broker update successfully", "Success");
       });
     } else {
-      this.appService.addUsers(obj).subscribe((data) => {
+      this.appService.addUsers(formData).subscribe((data) => {
         this.router.navigate(["broker"]);
         this.toastr.success("Broker add successfully", "Success");
       });
     }
+  }
+
+  previewFile(files) {
+    if (files.length === 0) return;
+
+    var mimeType = files[0].type;
+    if (mimeType.match(/image\/*/) == null) {
+      this.message = "Only images are supported.";
+      return;
+    }
+
+    var reader = new FileReader();
+    this.imagePath = files;
+    reader.readAsDataURL(files[0]);
+    // console.log(files[0]);
+    this.imgURL_name = files[0];
+    reader.onload = (_event) => {
+      this.imgURL = reader.result;
+    };
   }
 
   changeReting(input, val) {
