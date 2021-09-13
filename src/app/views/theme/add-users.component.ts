@@ -23,8 +23,8 @@ export class AddUsersComponent implements OnInit {
   longitude: number;
   zoom: number;
   address: string;
-  rating: number;
-  ratings_icons = ["", "", "", "", ""];
+  // rating: number;
+  // ratings_icons = ["", "", "", "", ""];
   is_valid_email = false;
   add_broker = "Add Broker";
   public imagePath;
@@ -186,7 +186,7 @@ export class AddUsersComponent implements OnInit {
       latitude: this.latitude,
       longitude: this.longitude,
       address: this.address,
-      rating: this.rating,
+      // rating: this.rating,
     };
     const formData = new FormData();
     formData.append(
@@ -207,9 +207,9 @@ export class AddUsersComponent implements OnInit {
     formData.append("latitude", obj.latitude);
     formData.append("longitude", obj.longitude);
     formData.append("address", obj.address);
-    if (obj.rating != null) {
-      formData.append("rating", obj.rating);
-    }
+    // if (obj.rating != null) {
+    //   formData.append("rating", obj.rating);
+    // }
     if (this.imgURL_name && this.imgURL_name != "undefined") {
       formData.append("image", this.imgURL_name);
     }
@@ -245,13 +245,13 @@ export class AddUsersComponent implements OnInit {
     };
   }
 
-  changeReting(input, val) {
-    this.ratings_icons = ["", "", "", "", ""];
-    this.rating = input;
-    for (let index = 0; index < input + 1; index++) {
-      this.ratings_icons[index] = "ratings-icons";
-    }
-  }
+  // changeReting(input, val) {
+  //   this.ratings_icons = ["", "", "", "", ""];
+  //   this.rating = input;
+  //   for (let index = 0; index < input + 1; index++) {
+  //     this.ratings_icons[index] = "ratings-icons";
+  //   }
+  // }
 
   collapsed(event: any): void {
     // console.log(event);
