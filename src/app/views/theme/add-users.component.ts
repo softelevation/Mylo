@@ -215,13 +215,21 @@ export class AddUsersComponent implements OnInit {
     }
     if (this.user_id) {
       this.appService.updateUsers(formData, this.user_id).subscribe((data) => {
-        this.router.navigate(["broker"]);
-        this.toastr.success("Broker update successfully", "Success");
+        if (data.status) {
+          this.router.navigate(["broker"]);
+          this.toastr.success("Broker update successfully", "Success");
+        } else {
+          this.toastr.error(data.message, "Error");
+        }
       });
     } else {
       this.appService.addUsers(formData).subscribe((data) => {
-        this.router.navigate(["broker"]);
-        this.toastr.success("Broker add successfully", "Success");
+        if (data.status) {
+          this.router.navigate(["broker"]);
+          this.toastr.success("Broker add successfully", "Success");
+        } else {
+          this.toastr.error(data.message, "Error");
+        }
       });
     }
   }
