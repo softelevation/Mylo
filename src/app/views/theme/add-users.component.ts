@@ -88,7 +88,9 @@ export class AddUsersComponent implements OnInit {
             this.latitude = res["data"].latitude;
             this.longitude = res["data"].longitude;
             this.rating = res["data"].rating;
-            this.imgURL = this.serverUrl + res["data"].image;
+            if (res["data"].image) {
+              this.imgURL = this.serverUrl + res["data"].image;
+            }
           });
       } else {
         this.user_id = 0;
@@ -205,7 +207,9 @@ export class AddUsersComponent implements OnInit {
     formData.append("latitude", obj.latitude);
     formData.append("longitude", obj.longitude);
     formData.append("address", obj.address);
-    formData.append("rating", obj.rating);
+    if (obj.rating != null) {
+      formData.append("rating", obj.rating);
+    }
     if (this.imgURL_name && this.imgURL_name != "undefined") {
       formData.append("image", this.imgURL_name);
     }
